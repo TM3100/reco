@@ -1,4 +1,4 @@
-gigit# Usa una imagen base oficial de Eclipse Temurin con JDK 21
+# Usa una imagen base oficial de Eclipse Temurin con JDK 21
 FROM eclipse-temurin:21-jdk
 
 # Establece el directorio de trabajo dentro del contenedor
