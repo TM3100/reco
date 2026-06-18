@@ -13,7 +13,9 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins = "http://127.0.0.1:5500")
 @RestController
@@ -54,7 +56,10 @@ public class UserController {
         if (userDb == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("El correo ya está registrado o faltan campos obligatorios");
         }
-        return ResponseEntity.ok(service.findByEmail(user.getEmail()));
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Usuario registrado exitosamente");
+        return ResponseEntity.ok(response);
+        //return ResponseEntity.ok(service.findByEmail(user.getEmail()));
     }
 
     @PostMapping("/login")
