@@ -53,7 +53,7 @@ public class UserController {
         if (service.add(user) == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("El correo ya está registrado o faltan campos obligatorios");
         }
-        return ResponseEntity.ok("Usuario registrado exitosamente");
+        return ResponseEntity.ok(service.findByEmail(user.getEmail()));
     }
 
     @PostMapping("/login")
