@@ -50,7 +50,8 @@ public class UserController {
             }
             return ResponseEntity.badRequest().body(errors);
         }
-        if (service.add(user) == null) {
+        User userDb = service.add(user);
+        if (userDb == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("El correo ya está registrado o faltan campos obligatorios");
         }
         return ResponseEntity.ok(service.findByEmail(user.getEmail()));
