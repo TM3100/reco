@@ -43,18 +43,18 @@ public class UserController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> add(@Valid @RequestBody UserDTO user, BindingResult result) {
+    public ResponseEntity<Map<String, String>> add(@Valid @RequestBody UserDTO user, BindingResult result) {
         if (result.hasErrors()) {
             List<String> errors = new ArrayList<>();
 
             for (ObjectError error : result.getAllErrors()) {
                 errors.add(error.getDefaultMessage());
             }
-            return ResponseEntity.badRequest().body(errors);
+            //  return ResponseEntity.badRequest().body(errors);
         }
         User userDb = service.add(user);
         if (userDb == null) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("El correo ya está registrado o faltan campos obligatorios");
+            // return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("El correo ya está registrado o faltan campos obligatorios");
         }
         Map<String, String> response = new HashMap<>();
         response.put("message", "Usuario registrado exitosamente");
